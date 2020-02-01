@@ -1,5 +1,31 @@
-# README
+#Setup
+### 1. Versions
+Make sure you have the latest stable ruby version which is currently for this project - 2.7.0
 
+In addition, you need to install Redis (currently it's redis-5.0.7 used). Redis is used by background worker Sidekiq.
+
+### 2. Bundle up
+Go to the project's directory in your command line `bundle install` or simply `bundle`.
+
+#Launch the project
+### 1. Launch redis server
+Run the following in your command line:
+```
+redis-server
+```
+### 2. Launch the Rails app and Sidekiq
+
+Launch Rails app:
+```
+bundle exec rails s
+```
+
+Launch Sidekiq:
+```
+bundle exec sidekiq -C ./config/sidekiq.yml
+```
+
+JSON payload example:
 ```
 {
   "message": "Some message",
@@ -12,22 +38,17 @@
 }
 ```
 
-Things you may want to cover:
+or with `schedule_at` option:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+{
+  "message": "Some message",
+  "schedule_at": "01/02/2020 15:31:29",
+  "send_to": [
+    {
+      "messenger_type": "Viber",
+      "uid": "79991234567891"
+    }		
+  ]
+}
+```

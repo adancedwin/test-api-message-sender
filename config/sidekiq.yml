@@ -1,0 +1,6 @@
+---
+:queues:
+  - messages_sender
+  - default
+
+:concurrency: 5

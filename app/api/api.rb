@@ -6,4 +6,10 @@ class API < Grape::API
 
     mount API::V1::MessageResource
   end
+
+  namespace :stubs do
+    mount API::Stubs::Viber
+    mount API::Stubs::WhatsApp
+    mount API::Stubs::Telegram
+  end
 end
