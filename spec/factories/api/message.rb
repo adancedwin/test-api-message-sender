@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :message do
     #message 'Test message'
     #schedule_at '2012-02-01 23:59:59'
-    #send_to [
+    #receiver [
     #          {
     #            messenger_type: 'viber',
     #            uid: '79991234567891',

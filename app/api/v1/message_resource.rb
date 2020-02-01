@@ -1,4 +1,10 @@
 class API::V1::MessageResource < API::V1::Base
+  MESSENGERS = %w[
+    viber
+    whatsapp
+    telegram
+  ].freeze
+
   desc 'request to message users of provided messenger types'
   params do
     requires :message, type: String, desc: 'Message to send'
@@ -9,17 +15,21 @@ class API::V1::MessageResource < API::V1::Base
     end
   end
   post '/message' do
-    #params[:send_to].each
+    send_to = params[:send_to].inject([]) do |acc, receiver|
+      receiver['message'] = params[:message]
+      acc << [receiver] if MESSENGERS.include?(receiver[:messenger_type].downcase)
+    end
+
     API::SendMessage.new.execute(
-      params[:message],
-      params[:send_to],
+      send_to,
       schedule_at: params[:schedule_at],
       async: true
     )
+
     status 200
     {
       status: 200,
       message: 'ok'
-    }
+    }.to_json
   end
 end

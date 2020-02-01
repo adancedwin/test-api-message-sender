@@ -1,18 +1,16 @@
 class API::SendMessage
-  def execute(message, send_to, schedule_at: nil, async: false)
+  def execute(send_to, schedule_at: nil, async: false)
     schedule_at = schedule_at ? Time.parse(schedule_at).to_f : nil
     if async
-      Sidekiq::Client.push(
+      Sidekiq::Client.push_bulk(
         'queue' => 'messages_sender',
-        'class' => SendMessagesWorker,
+        'class' => SendMessageWorker,
         'at' => schedule_at,
         'retry' => 5,
-        'args' => [message, send_to]
+        'args' => send_to
       )
     else
-      puts '#############################'
-      puts send_to
-      puts '#############################'
+      API::Wrappers::MessengersStub.new.message(send_to)
     end
   end
 end

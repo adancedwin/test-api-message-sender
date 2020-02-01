@@ -9,7 +9,7 @@ class API < Grape::API
 
   namespace :stubs do
     mount API::Stubs::Viber
-    mount API::Stubs::WhatsApp
+    mount API::Stubs::Whatsapp
     mount API::Stubs::Telegram
   end
 end

@@ -29,9 +29,9 @@ JSON payload example:
 ```
 {
   "message": "Some message",
-  "send_to": [
+  "receiver": [
     {
-      "messenger_type": "Viber",
+      "messenger_type": "viber",
       "uid": "79991234567891"
     }		
   ]
@@ -44,9 +44,9 @@ or with `schedule_at` option:
 {
   "message": "Some message",
   "schedule_at": "01/02/2020 15:31:29",
-  "send_to": [
+  "receiver": [
     {
-      "messenger_type": "Viber",
+      "messenger_type": "viber",
       "uid": "79991234567891"
     }		
   ]
