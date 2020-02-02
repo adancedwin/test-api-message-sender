@@ -32,7 +32,7 @@ JSON payload example:
   "receiver": [
     {
       "messenger_type": "viber",
-      "uid": "79991234567891"
+      "phone_number": "79991234567891"
     }		
   ]
 }
@@ -47,7 +47,7 @@ or with `schedule_at` option:
   "receiver": [
     {
       "messenger_type": "viber",
-      "uid": "79991234567891"
+      "phone_number": "79991234567891"
     }		
   ]
 }

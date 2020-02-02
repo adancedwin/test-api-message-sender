@@ -23,7 +23,7 @@ describe '/v1/message' do
     context 'send message with no type' do
 
     end
-    context 'send message with no uid' do
+    context 'send message with no phone_number' do
 
     end
   end

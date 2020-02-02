@@ -10,10 +10,13 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 
 # a b c d e f g h i j k l m n o p q r s t u v w x y z
 
+gem 'aasm', '~> 5.0', '>= 5.0.6'
+
 gem 'grape', '~> 1.3'
 
 gem 'httparty', '~> 0.17.3'
 
+gem 'pg', '~> 1.2', '>= 1.2.2'
 gem 'puma', '~> 4.1'
 
 gem 'sidekiq'

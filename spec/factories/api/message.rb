@@ -5,7 +5,7 @@ FactoryBot.define do
     #receiver [
     #          {
     #            messenger_type: 'viber',
-    #            uid: '79991234567891',
+    #            phone_number: '79991234567891',
     #          }
     #        ]
   end
