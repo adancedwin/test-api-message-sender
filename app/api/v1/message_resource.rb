@@ -1,4 +1,6 @@
 class API::V1::MessageResource < API::V1::Base
+  require_relative 'validations/messenger_type'
+
   MESSENGERS = %w[
     viber
     whatsapp
@@ -7,11 +9,11 @@ class API::V1::MessageResource < API::V1::Base
 
   desc 'request to message users of provided messenger types'
   params do
-    requires :message, type: String, desc: 'Message to send'
+    requires :message, min_length: 5, max_length: 4000, type: String, desc: 'Message to send'
     optional :schedule_at, type: String, desc: 'DateTime to schedule_at when a message should be sent'
     group :send_to, type: Array do
-      requires :messenger_type, type: String, desc: 'Messenger type'
-      requires :phone_number, type: String, desc: 'phone_number - phone number'
+      requires :messenger_type, messenger_type: MESSENGERS, type: String, desc: 'Messenger type'
+      requires :phone_number, exact_length: 14, type: String, desc: 'phone_number - phone number'
     end
   end
   post '/message' do
@@ -19,8 +21,6 @@ class API::V1::MessageResource < API::V1::Base
       receiver['message'] = params[:message]
       acc << [receiver] if MESSENGERS.include?(receiver[:messenger_type].downcase)
     end
-    puts send_to
-
     API::SendMessage.new.execute(
       send_to,
       schedule_at: params[:schedule_at],
@@ -29,8 +29,7 @@ class API::V1::MessageResource < API::V1::Base
 
     status 200
     {
-      status: 200,
-      message: 'ok'
+      message: 'request started processing'
     }.to_json
   end
 end

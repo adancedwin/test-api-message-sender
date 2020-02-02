@@ -1,4 +1,8 @@
 class API::V1::Base < Grape::API
+  require_relative 'validations/max_length'
+  require_relative 'validations/min_length'
+  require_relative 'validations/exact_length'
+  
   def self.inherited(subclass)
     super
 
