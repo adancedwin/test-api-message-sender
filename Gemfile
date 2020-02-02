@@ -21,17 +21,12 @@ gem 'puma', '~> 4.1'
 
 gem 'sidekiq'
 
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 3.9'
-  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
 end
 
 group :development do
