@@ -72,11 +72,15 @@ JSON body example:
 ```
 {
   "message": "Some message",
-  "receiver": [
+  "send_to": [
     {
       "messenger_type": "viber",
       "phone_number": "79991234567891"
-    }		
+    },
+    {
+      "messenger_type": "whatsapp",
+      "phone_number": "79998976543212"
+    }	
   ]
 }
 ```
@@ -87,7 +91,7 @@ or with `schedule_at` option:
 {
   "message": "Some message",
   "schedule_at": "2020-02-02 21:33:57.917883 +0300",
-  "receiver": [
+  "send_to": [
     {
       "messenger_type": "viber",
       "phone_number": "79991234567891"
