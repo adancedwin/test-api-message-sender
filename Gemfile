@@ -17,7 +17,7 @@ gem 'grape', '~> 1.3'
 gem 'httparty', '~> 0.17.3'
 
 gem 'pg', '~> 1.2', '>= 1.2.2'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 
 gem 'sidekiq'
 
